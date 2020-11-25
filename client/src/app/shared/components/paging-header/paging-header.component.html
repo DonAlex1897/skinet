@@ -1,0 +1,21 @@
+<header *ngIf="this.totalCount > 0">
+    <span>
+      Showing
+      <strong>
+        {{(pageNumber - 1) * pageSize + 1}}
+      </strong> -
+      <strong>
+        {{
+          totalCount > pageSize ?
+          pageNumber * pageSize :
+          totalCount
+        }}
+      </strong> of
+      <strong>
+        {{this.totalCount}}
+      </strong> Results
+    </span>
+  </header>
+  <header *ngIf="this.totalCount === 0">
+    No Results Found!
+  </header>

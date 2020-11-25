@@ -18,13 +18,13 @@ namespace API.Controllers
     public class ProductsController : BaseApiController
     {
         private readonly IGenericRepository<Product> _productRepo;
-        private readonly IGenericRepository<ProductBrand> _productTypeRepo;
-        private readonly IGenericRepository<ProductType> _productBrandsRepo;
+        private readonly IGenericRepository<ProductType> _productTypeRepo;
+        private readonly IGenericRepository<ProductBrand> _productBrandsRepo;
         private readonly IMapper _mapper;
 
         public ProductsController(IGenericRepository<Product> productRepo,
-                                  IGenericRepository<ProductBrand> productTypeRepo,
-                                  IGenericRepository<ProductType> productBrandsRepo,
+                                  IGenericRepository<ProductType> productTypeRepo,
+                                  IGenericRepository<ProductBrand> productBrandsRepo,
                                   IMapper mapper)
         {
             _productBrandsRepo = productBrandsRepo;
@@ -53,7 +53,7 @@ namespace API.Controllers
         {
             var spec = new ProductsWithBrandsAndTypesSpecification(Id);
             var product = await _productRepo.GetEntityWithSpecAsync(spec);
-            
+
             if(product == null)
                 return NotFound(new ApiResponse(404));
 
